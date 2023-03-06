@@ -7,9 +7,10 @@ public class MyGridManager : MonoBehaviour
     public int pixelsperunit; //Muss 3 sein
     public Sprite SpriteRenderer1;
     public Sprite SpriteRenderer2;
+    public GameObject referenceTile;
     void Start()
     {
-        GameObject referenceTile =(GameObject)Instantiate((GameObject)Instantiate(Resources.Load("FieldPrefab")), transform);
+        //GameObject referenceTile =(GameObject)Instantiate((GameObject)Instantiate(Resources.Load("FieldPrefab")), transform);
         for(int x=0;x<9;x++) for(int y=0;y<9;y++){
             GameObject tile =(GameObject)Instantiate(referenceTile, transform);
             tile.transform.position = new Vector2(128/pixelsperunit*x+260, 128/pixelsperunit*y+40);

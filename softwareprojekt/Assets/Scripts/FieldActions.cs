@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class FieldActions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    TurnManager turnmanager;
+    [SerializeField] GameObject tman;
+    [SerializeField] GameObject this;
 
-    // Update is called once per frame
-    void Update()
+
+
+    void start()
     {
-        
-    }
+          turnmanager=tman.GetComponent<TurnManager>();
+    } 
+    /*public void OnPointerClick(PointerEventData pointerEventData)
+    {
+        turnmanager.FieldInput((int)((this.transform.position.x-260)/128*3), (int)((this.transform.position.y-40)/128*3));
+    }*/
 }
