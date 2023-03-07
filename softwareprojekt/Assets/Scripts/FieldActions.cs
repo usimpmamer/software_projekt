@@ -6,16 +6,16 @@ public class FieldActions : MonoBehaviour
 {
     TurnManager turnmanager;
     [SerializeField] GameObject tman;
-    [SerializeField] GameObject this;
 
 
 
     void start()
     {
-          turnmanager=tman.GetComponent<TurnManager>();
-    } 
-    /*public void OnPointerClick(PointerEventData pointerEventData)
+        turnmanager=tman.GetComponent<TurnManager>();
+    }
+    /* 
+    public void OnPointerClick(PointerEventData pointerEventData)
     {
-        turnmanager.FieldInput((int)((this.transform.position.x-260)/128*3), (int)((this.transform.position.y-40)/128*3));
+        //turnmanager.FieldInput((int)((myfield.transform.position.x-260)/128*3), (int)((myfield.transform.position.y-40)/128*3));
     }*/
 }
