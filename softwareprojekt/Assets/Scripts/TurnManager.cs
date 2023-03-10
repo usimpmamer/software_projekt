@@ -5,6 +5,7 @@ using TMPro;
 
 public class TurnManager : MonoBehaviour
 {
+    public int energy=100;
     [SerializeField] 
     private TMP_Text TurnDisplay; //Rundenanzeige (oben links)
     [SerializeField]
@@ -26,6 +27,7 @@ public class TurnManager : MonoBehaviour
 
     public void EndOpponentTurn(){
         turn=0;
+        energy=100;
         TurnDisplay.text="Your turn";
     }
 }
