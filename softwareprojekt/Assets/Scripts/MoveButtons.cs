@@ -10,15 +10,15 @@ public class MoveButtons : MonoBehaviour
         figureactions=faction.GetComponent<FigureActions>();
     }
     public void moveleft(){
-        figureactions.move(-42,0);
+        figureactions.move(-1,0);
     }
     public void moveright(){
-        figureactions.move(42,0);
+        figureactions.move(1,0);
     }
     public void moveup(){
-        figureactions.move(0,42);
+        figureactions.move(0,1);
     }
     public void movedown(){
-        figureactions.move(0,-42);
+        figureactions.move(0,-1);
     }
 }

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class SetPlayerSelection : MonoBehaviour
 {
     FigureActions figureactions;
-    [SerializeField] GameObject faction;
+    [SerializeField] GameObject figaction; //FigureAction Object
     [SerializeField] GameObject _tofocus;
     void Awake(){
-        figureactions=faction.GetComponent<FigureActions>();
+        figureactions=figaction.GetComponent<FigureActions>();
     }
     public void focusplayer(){
         figureactions.selectedObject=_tofocus;

@@ -5,14 +5,21 @@ using TMPro;
 
 public class TurnManager : MonoBehaviour
 {
-    public int energy=100;
+    //Scripts:
+    RoundDisplay rounddisplay;
+    //Placehoulders
     [SerializeField] 
-    private TMP_Text TurnDisplay; //Rundenanzeige (oben links)
-    [SerializeField]
-    public int turn=-1; //0 ... Spieler dran, 1... Gegner
-    
+    private TMP_Text TurnDisplay, rdisplay; //Rundenanzeige (oben links)
+    public int energy=100;
+    public int round=1;
+    public bool turn=true; //true ... Spieler dran, false... Gegner
+    void Awake(){
+        rounddisplay=rdisplay.GetComponent<RoundDisplay>();
+    }
     void start(){
         TurnDisplay.text="Your turn";
+        Debug.Log("haha");
+        rounddisplay.round(1);
     }
     
     public void FieldInput(int i, int j){
@@ -21,13 +28,16 @@ public class TurnManager : MonoBehaviour
     
 
     public void EndPlayerTurn(){
-        turn=1;
+        turn=false;
         TurnDisplay.text="Opponent's turn";
+        EndOpponentTurn();
     }
 
     public void EndOpponentTurn(){
-        turn=0;
+        turn=true;
         energy=100;
+        round+=1;
         TurnDisplay.text="Your turn";
+        rounddisplay.round(round);
     }
 }
