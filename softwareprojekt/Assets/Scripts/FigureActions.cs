@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public class FigureActions : MonoBehaviour
 {
@@ -27,29 +28,28 @@ public class FigureActions : MonoBehaviour
     public void moveto(GameObject fig, int i, int j){
         //fig.transform.position = new Vector3(-498+42*i,-254+42*j,-1);
         fig.transform.position = figure1.transform.position+new Vector3(42*i,42*j,-1);
+        
     }
     public void move(int i, int j){
-        Vector3 newpos;
-        int ipos;
-        int jpos;
-        if(turnmanager.energy>0){
-            //wenn gebirgsfeld:
-            newpos=selectedObject.transform.position + new Vector3(42*i,42*j,0);
-            ipos=(int)(((selectedObject.transform.position + new Vector3(42*i,42*j,0)).x-455.439)/42);
-            jpos=(int)(((selectedObject.transform.position + new Vector3(42*i,42*j,0)).y-253.249)/42);
-            //Debug.Log("then x "+newpos.x+", then y "+newpos.y);
-            if(mygridmanager.map[ipos,jpos]!=0){
-                //Wenn von Spieler blockiert:
-                //if(gmanager.map)
-                selectedObject.transform.position = selectedObject.transform.position + new Vector3(42*i,42*j,0);
-                turnmanager.energy-=1;
-            }
+        int[] gridcoor;
+        GameObject[] allfigs;
+        FigureAttributeScript props=selectedObject.GetComponent<FigureAttributeScript>(); //properties des ausgewählten Objekts
+        if(turnmanager.energy<=0) goto end;         //Wenn genügend Energie zur Verfügung steht
+        if(props.movesleft<=0) goto end;
+        gridcoor=gridvalue(selectedObject.transform.position + new Vector3(42*i,42*j,0));
+        if(mygridmanager.map[gridcoor[0],gridcoor[1]]==0) goto end;        //wenn gebirgsfeld
+        //Wenn von Spieler blockiert:
+        allfigs=GameObject.FindGameObjectsWithTag("Figure");
+        for(int k=0;k<allfigs.Length;k++){
+            if(gridcoor[0]==gridvalue(allfigs[k].transform.position)[0]&&gridcoor[1]==gridvalue(allfigs[k].transform.position)[1]&&props.index!=allfigs[k].GetComponent<FigureAttributeScript>().index) goto end;
         }
+        selectedObject.transform.position = selectedObject.transform.position + new Vector3(42*i,42*j,0);
+        turnmanager.energy-=1;
+        props.movesleft-=1;
+        end:;
     }
-    public int[] gridvalue(int coordinate, Vector3 pos){ //outputs the grid coordinates (integer from 0 to 8) converted from Vector3 position of an object
+    public int[] gridvalue(Vector3 pos){ //outputs the grid coordinates (integer from 0 to 8) converted from Vector3 position of an object
         int[] gridc={(int)(((pos).x-455.439)/42),(int)(((pos).y-253.249)/42)};
-        /*gridc[0]=(int)(((pos).x-455.439)/42);
-        gridc[1]=(int)(((pos).y-253.249)/42);*/
         return gridc;
     }
     public void focus1(){

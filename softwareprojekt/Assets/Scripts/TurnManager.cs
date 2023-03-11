@@ -31,6 +31,8 @@ public class TurnManager : MonoBehaviour
         turn=false;
         TurnDisplay.text="Opponent's turn";
         EndOpponentTurn();
+        //Opponents turn:
+        
     }
 
     public void EndOpponentTurn(){
