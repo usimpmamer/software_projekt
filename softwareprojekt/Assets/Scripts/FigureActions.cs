@@ -6,22 +6,22 @@ using System;
 
 public class FigureActions : MonoBehaviour
 {
-    MyGridManager mygridmanager;
+    LevelProperties levelprops;
     [SerializeField]
-    public GameObject tman, figure1, figure2, figure3, selectedObject, gmanager;
+    public GameObject tman, figure1, figure2, figure3, selectedObject, level;
     [SerializeField] Camera cam;
     TurnManager turnmanager;
     void Awake()
     {
         turnmanager=tman.GetComponent<TurnManager>();
-        mygridmanager=gmanager.GetComponent<MyGridManager>();
+        levelprops=level.GetComponent<LevelProperties>();
     }
     void Start()
     {
         
-        moveto(figure2, mygridmanager.playerfigures[1,0], mygridmanager.playerfigures[1,1]);
-        moveto(figure3, mygridmanager.playerfigures[2,0], mygridmanager.playerfigures[2,1]);
-        moveto(figure1, mygridmanager.playerfigures[0,0], mygridmanager.playerfigures[0,1]);
+        moveto(figure1, levelprops.figures[0][0], levelprops.figures[0][1]);
+        moveto(figure2, levelprops.figures[1][0], levelprops.figures[1][1]);
+        moveto(figure3, levelprops.figures[2][0], levelprops.figures[2][1]);
         //moveto(figure3,1,1);
         //figure1.transform.position = new Vector3(-84+42*i,42*j,-1);
     }
@@ -37,10 +37,13 @@ public class FigureActions : MonoBehaviour
         if(turnmanager.energy<=0) goto end;         //Wenn genügend Energie zur Verfügung steht
         if(props.movesleft<=0) goto end;
         gridcoor=gridvalue(selectedObject.transform.position + new Vector3(42*i,42*j,0));
-        if(mygridmanager.map[gridcoor[0],gridcoor[1]]==0) goto end;        //wenn gebirgsfeld
+        Debug.Log("Player to move to x="+gridcoor[0]+", y="+gridcoor[1]);
+        if(levelprops.map[gridcoor[0],gridcoor[1]]==0) goto end;        //wenn gebirgsfeld
         //Wenn von Spieler blockiert:
         allfigs=GameObject.FindGameObjectsWithTag("Figure");
+        //Debug.Log("2");
         for(int k=0;k<allfigs.Length;k++){
+            //Debug.Log("Schritt 3, "+k);
             if(gridcoor[0]==gridvalue(allfigs[k].transform.position)[0]&&gridcoor[1]==gridvalue(allfigs[k].transform.position)[1]&&props.index!=allfigs[k].GetComponent<FigureAttributeScript>().index) goto end;
         }
         selectedObject.transform.position = selectedObject.transform.position + new Vector3(42*i,42*j,0);
@@ -49,7 +52,8 @@ public class FigureActions : MonoBehaviour
         end:;
     }
     public int[] gridvalue(Vector3 pos){ //outputs the grid coordinates (integer from 0 to 8) converted from Vector3 position of an object
-        int[] gridc={(int)(((pos).x-455.439)/42),(int)(((pos).y-253.249)/42)};
+        //Debug.Log("transform x="+pos.x+", y="+pos.y+", z="+pos.z);
+        int[] gridc={(int)(((pos).x-454.639)/42),(int)(((pos).y-253.249)/42)}; //x=-455.439, new x=-454.639
         return gridc;
     }
     public void focus1(){

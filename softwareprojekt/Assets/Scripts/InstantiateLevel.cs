@@ -10,11 +10,8 @@ public class InstantiateLevel : MonoBehaviour
     void Awake()
     {
         level1=levelobject.GetComponent<LevelProperties>();
-    }    
-    void Start()
-    {
-        /*level1.name="Level 1";
-        level1.map={{1,0,1,1,1,1,1,1,1},                                  //1-gras, 0-gebirge, 2-...
+        level1.name="Level 1";
+        level1.map=new int[,] {{1,0,1,1,1,1,1,1,1},                                  //1-gras, 0-gebirge, 2-...
                     {1,1,1,1,1,1,1,1,1},
                     {1,1,1,1,1,0,1,1,1},
                     {1,1,1,0,1,1,1,1,1},
@@ -23,7 +20,7 @@ public class InstantiateLevel : MonoBehaviour
                     {1,1,1,1,1,1,1,1,1},
                     {1,1,1,0,1,1,1,1,1},
                     {1,1,1,1,1,1,1,1,1}};
-        level1.house={                                    //0-no house, 1-house
+        level1.house=new int[,] {                                    //0-no house, 1-house
                         {0,1,0,0,0,0,0,0,0},
                         {0,1,0,0,0,0,0,0,0},
                         {0,0,0,0,0,1,0,0,0},
@@ -33,10 +30,12 @@ public class InstantiateLevel : MonoBehaviour
                         {0,0,0,0,0,0,0,0,0},
                         {0,0,0,1,0,0,0,0,0},
                         {0,0,0,0,0,0,0,0,0}};
-        int[] temp={0,0};
-        level1.figures.Add(temp); //Player
-        level1.figures.Add(1); //Player
-        level1.figures.Add(2); //Player
-        level1.figures.Add(4); //Enemy*/
+        level1.figures.Add(new int[] {0,0}); //Player
+        level1.figures.Add(new int[] {1,0}); //Player
+        level1.figures.Add(new int[] {2,0}); //Player
+        level1.figures.Add(new int[] {5,5}); //Enemy
+    }    
+    void Start()
+    {
     }
 }

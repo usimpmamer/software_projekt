@@ -9,5 +9,5 @@ public class LevelProperties : MonoBehaviour
     public int[,] house=new int[9,9];
     public int[] mainhouse={3,3}; 
     //public int [,] playerfigures={{0,0},{1,0},{3,0}}; //Player, x-y coordinates starting position
-    List<int[]> figures = new List<int[]>();
+    public List<int[]> figures = new List<int[]>();
 }
