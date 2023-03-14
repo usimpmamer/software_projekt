@@ -38,7 +38,8 @@ public class FigureActions : MonoBehaviour
         if(props.movesleft<=0) goto end;
         gridcoor=gridvalue(selectedObject.transform.position + new Vector3(42*i,42*j,0));
         Debug.Log("Player to move to x="+gridcoor[0]+", y="+gridcoor[1]);
-        if(levelprops.map[gridcoor[0],gridcoor[1]]==0) goto end;        //wenn gebirgsfeld
+        if(levelprops.map[gridcoor[0],gridcoor[1]]==1) goto end;        //wenn gebirgsfeld
+        if(levelprops.map[gridcoor[0],gridcoor[1]]==2) goto end;        //wenn wasserfeld
         //Wenn von Spieler blockiert:
         allfigs=GameObject.FindGameObjectsWithTag("Figure");
         //Debug.Log("2");

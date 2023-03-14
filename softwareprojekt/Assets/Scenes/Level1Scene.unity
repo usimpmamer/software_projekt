@@ -1319,6 +1319,11 @@ MonoBehaviour:
   pixelsperunit: 3
   SpriteRenderer1: {fileID: 21300000, guid: 9ab5e8b8db1adc04d982a2f23dc2b500, type: 3}
   SpriteRenderer2: {fileID: 21300000, guid: 45b762e68a2103941965d407142b7964, type: 3}
+  SpriteRenderer3: {fileID: 21300000, guid: 27848da64dbd6fe4998b4922380e19b1, type: 3}
+  SpriteRenderer4: {fileID: 21300000, guid: 06d6a71681b0de94db3d3aebbae960c2, type: 3}
+  SpriteRenderer5: {fileID: 21300000, guid: 4a3b6be8da50fec498bee5458bcd0d07, type: 3}
+  SpriteRenderer6: {fileID: 21300000, guid: 4c4887afea178654c9e90bd4700ea80c, type: 3}
+  SpriteRenderer7: {fileID: 21300000, guid: c6479d97d1968c441a3b0ca2e0ee3656, type: 3}
   referenceTile: {fileID: 2014915307}
   level1: {fileID: 1899651283}
 --- !u!1 &491870457
@@ -2492,8 +2497,8 @@ MonoBehaviour:
   index: 1
   player: 1
   health: 100
-  moverange: 5
-  movesleft: 5
+  moverange: 10
+  movesleft: 10
 --- !u!1 &851224833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,8 +3826,8 @@ MonoBehaviour:
   index: 0
   player: 1
   health: 100
-  moverange: 5
-  movesleft: 5
+  moverange: 10
+  movesleft: 10
 --- !u!1 &1649214290
 GameObject:
   m_ObjectHideFlags: 0
@@ -4658,8 +4663,8 @@ MonoBehaviour:
   index: 2
   player: 1
   health: 100
-  moverange: 5
-  movesleft: 5
+  moverange: 10
+  movesleft: 10
 --- !u!1 &2098580716
 GameObject:
   m_ObjectHideFlags: 0
